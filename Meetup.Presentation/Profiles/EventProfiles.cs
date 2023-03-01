@@ -9,8 +9,7 @@ namespace Meetup.Presentation.Profiles
 
         public EventProfiles()
         {
-            // Source --> Destination
-
+ 
             CreateMap<Event, EventReadDto>()
                  .ReverseMap();
             CreateMap<EventCreateDto, Event>();

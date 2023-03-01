@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Meetup.Presentation.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : Controller
@@ -27,8 +28,7 @@ namespace Meetup.Presentation.Controllers
         public ActionResult<UserReadDto> Get(int Id)
         {
             var user = _userService.GetByIdAsync(Id);
-            // Destination --> Source
-            var userReadDto = _mapper.Map<UserReadDto>(user);
+             var userReadDto = _mapper.Map<UserReadDto>(user);
             return Ok(userReadDto);
 
         }
@@ -38,13 +38,10 @@ namespace Meetup.Presentation.Controllers
         [HttpPost]
         public ActionResult<UserReadDto> Post(UserReadDto users)
         {
-            //Map CreatedDto to User
-            var CreatedUser = _mapper.Map<User>(users);
+             var CreatedUser = _mapper.Map<User>(users);
 
-            //Create User
-            var createdUserService = _userService.AddAsync(CreatedUser);
-
-            //Map user to Read Dto
+             var createdUserService = _userService.AddAsync(CreatedUser);
+ 
             var userReadDto = _mapper.Map<UserReadDto>(createdUserService);
 
             return Ok(userReadDto);

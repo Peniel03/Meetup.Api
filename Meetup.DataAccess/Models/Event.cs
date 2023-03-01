@@ -20,10 +20,5 @@ namespace Meetup.DataAccess.Models
         public int UserId { get; set; }
         public ICollection<BookedEvent> BookedEvents { get; set; }
 
-
-        public Event()
-        {
-
-        }
     }
 }

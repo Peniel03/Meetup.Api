@@ -22,9 +22,6 @@ namespace Meetup.DataAccess.Models
         //Relationships
         public Event Event { get; set; }
         public int EventId { get; set; }
-        public BookedEvent()
-        {
 
-        }
     }
 }

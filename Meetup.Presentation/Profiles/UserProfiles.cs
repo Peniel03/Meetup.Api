@@ -8,8 +8,7 @@ namespace Meetup.Presentation.Profiles
     {
         public UserProfiles()
         {
-            // Source --> Destination
-
+ 
             CreateMap<User, UserReadDto>()
              .ReverseMap();
             CreateMap<UserCreateDto, User>();

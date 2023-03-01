@@ -11,15 +11,24 @@ namespace Meetup.Presentation.Controllers
     [ApiController]
     public class BookedEventController : Controller
     {
-
+         
         private readonly IBookedEventService _bookedEventService;
         private readonly IMapper _mapper;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bookedEventService"></param>
+        /// <param name="mapper"></param>
         public BookedEventController(IBookedEventService  bookedEventService, IMapper mapper)
         {
             _bookedEventService = bookedEventService;
             _mapper = mapper;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpGet("{Id}")]
         public ActionResult<BookedEventReadDto> Get(int Id)
         {
@@ -30,22 +39,23 @@ namespace Meetup.Presentation.Controllers
 
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bookedEvents"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult<BookedEventReadDto> Post(BookedEventReadDto bookedEvents)
         {
-            //Map CreatedDto to User
             var CreatedBookedEvent = _mapper.Map<BookedEvent>(bookedEvents);
-            //Create User
             var createdBookedEventService = _bookedEventService.AddAsync(CreatedBookedEvent);
 
-            //Map user to Read Dto
             var bookedEventReadDto = _mapper.Map<BookedEventReadDto>(createdBookedEventService);
 
             return Ok(bookedEventReadDto);
         }
 
-
+        
         [HttpGet()]
         public ActionResult<BookedEventReadDto> GetAll()
         {
@@ -53,7 +63,11 @@ namespace Meetup.Presentation.Controllers
             return Ok(bookedEvents);
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bookedEvent"></param>
+        /// <returns></returns>
         [HttpPut]
         public ActionResult<BookedEventCreateDto> Update(BookedEventCreateDto bookedEvent)
         {
@@ -68,7 +82,10 @@ namespace Meetup.Presentation.Controllers
 
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="bookedEvent"></param>
         [HttpDelete]
         public void Delete(BookedEvent bookedEvent)
         {

@@ -8,8 +8,7 @@ namespace Meetup.Presentation.Profiles
     {
         public BookedEventProfiles()
         {
-            // Source --> Destination
-
+ 
             CreateMap<Event, EventReadDto>()
                  .ReverseMap();
             CreateMap<EventCreateDto, Event>();

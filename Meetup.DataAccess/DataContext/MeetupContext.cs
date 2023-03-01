@@ -18,14 +18,12 @@ namespace Meetup.DataAccess.DataContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //One ton many [User -> Event]
-            modelBuilder.Entity<User>()
+             modelBuilder.Entity<User>()
                 .HasMany<Event>(x => x.Events)
                 .WithOne(x => x.User)
                 .HasForeignKey(x => x.UserId);
 
-            //One ton many [Event -> BookedEvent]
-            modelBuilder.Entity<Event>()
+             modelBuilder.Entity<Event>()
                  .HasMany<BookedEvent>(r => r.BookedEvents)
                  .WithOne(r => r.Event)
                  .HasForeignKey(r => r.EventId);
@@ -33,7 +31,6 @@ namespace Meetup.DataAccess.DataContext
             base.OnModelCreating(modelBuilder);
 
         }
-        //Database Tables
         public DbSet<User> Users { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<BookedEvent> BookedEvents { get; set; }

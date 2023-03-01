@@ -17,9 +17,5 @@ namespace Meetup.DataAccess.Models
         //Relationships
         public ICollection<Event> Events { get; set; }
 
-        public User()
-        {
-
-        }
     }
 }
